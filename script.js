@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 type: 'video',
-                src: './Assets/Bridal.mp4',
+                src: './Assets/Bridal Makeup Photo Collage Instagram Story.mp4',
                 title: 'Makeup Artistry Showcase'
             },
             {
@@ -127,6 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 type: 'video',
                 src: './Assets/fashion3.mp4',
+                title: 'Fashion Showcase'
+            },
+            {
+                type: 'image',
+                src: './Assets/Bridal Makeup Instagram Post.png',
                 title: 'Fashion Showcase'
             }
         ];
