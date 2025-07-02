@@ -105,11 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'Fitness App Promo'
             },
             {
-                type: 'video',
-                src: './Assets/Bridal Makeup Photo Collage Instagram Story.mp4',
-                title: 'Makeup Artistry Showcase'
-            },
-            {
                 type: 'image',
                 src: './Assets/Mumbai.png',
                 title: 'Mumbai Cityscape'
@@ -129,11 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 src: './Assets/fashion3.mp4',
                 title: 'Fashion Showcase'
             },
-            {
-                type: 'image',
-                src: './Assets/Bridal Makeup Instagram Post.png',
-                title: 'Fashion Showcase'
-            }
         ];
         
         projects.forEach(project => {
