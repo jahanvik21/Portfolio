@@ -1,0 +1,257 @@
+/* Custom Styles for Portfolio */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #e5e7eb; /* gray-200 */
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hide main content initially */
+#main-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-in;
+}
+
+/* Splash Screen Styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease-out;
+}
+
+#splash-logo {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    cursor: pointer;
+    animation: floatPixels 6s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+#splash-logo:hover {
+    transform: scale(1.05);
+}
+
+@keyframes floatPixels {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* --- Header Styles --- */
+#header.scrolled {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    color: white;
+    position: relative;
+    font-weight: 500;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #a78bfa; /* purple-400 */
+    transition: width 0.3s;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section --- */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.video-background video {
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+/* --- Heading Animation with SplitType --- */
+.hero-heading .char {
+    transform: translateY(115%);
+    transition: transform 0.5s;
+}
+
+/* --- Unified Project Gallery --- */
+.project-gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    background-color: #000;
+    aspect-ratio: 4 / 3;
+}
+
+.project-gallery-item img,
+.project-gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-gallery-item:hover img,
+.project-gallery-item:hover video {
+    transform: scale(1.05);
+}
+
+.project-gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-gallery-item:hover .project-gallery-overlay {
+    opacity: 1;
+}
+
+.project-gallery-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: white;
+    transform: translateY(1rem);
+    transition: transform 0.3s;
+}
+
+.project-gallery-item:hover .project-gallery-title {
+    transform: translateY(0);
+}
+
+/* --- Play Icon for Video Thumbnails --- */
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    transform-origin: center;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.project-gallery-item:hover .play-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.play-icon svg {
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    padding-left: 0.25rem;
+}
+
+/* --- Lightbox Styles --- */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+#lightbox.active {
+    display: flex;
+}
+
+#lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: white;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+}
+
+/* ================================================= */
+/* NEW RULE TO FIX THE ZOOM-IN (CROPPING) ISSUE     */
+/* ================================================= */
+#lightbox-content img,
+#lightbox-content video {
+    width: 100%;
+    height: 100%;
+    max-width: 90vw;   /* Cannot be wider than 90% of the screen width */
+    max-height: 90vh;  /* Cannot be taller than 90% of the screen height */
+    object-fit: contain; /* This is the key: it fits the media inside, preserving aspect ratio */
+}
+
+
+/* --- Reveal Animation --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lenis Smooth Scroll Styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden !important;
+}
